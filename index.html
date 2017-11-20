@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="UTF-8">
+   <title>d3ReadFileTest</title>
+  <!-- <link rel="stylesheet" type="text/css" href="style.css">-->
+ </head>
+<div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.js"></script>
+
+
+<!-- Internal Style Sheet-->
+<style>
+html{
+  background: url(<!--URL of background image here-->) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+.heatmap{
+  margin: auto;
+}
+
+svg{
+  position: absolute;
+  display: block;
+  top: 65%;
+  left: 45%;
+}
+
+</style>
+
+<script>
+//Location of data
+var file = /pixels.csv;  // [Place "deviceIP/pixels.csv" here]
+
+//For use with d3.Interpolate must be between 0 and 1
+var domainMin = 0;
+var domainMax = 1;
+
+var rangeMin = 0;
+var rangeMax = 1;
+
+//Height and width of SVG. Should be set to match thenumber of pixels 
+var H = 64;
+var W = 64;
+
+//Pixel (rectangle) size in SVG
+var h = 10;
+var w = 10;
+
+//Refresh Rate in ms
+var refresh = 20;
+
+//Limits of domain and range. TODO Can be calculated dynamically??
+var colorDomain = [domainMin,domainMax]
+var colorScale = d3.scaleLinear().domain(colorDomain).range([0,1]);
+
+
+//Grab Data from url
+d3.csv(file, function(error, data) {
+   data.forEach(function(d) {
+    d.y = +d.y;
+    d.x = +d.x;
+    d.value = +d.value;
+   })
+//Grab SVG object
+  var svg = d3.select(".heatmap")
+    .append("svg")
+    .attr("width", H*h)
+    .attr("height", W*w)
+    .attr("id","test");
+
+  var rectangles = svg.selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect");
+
+  rectangles
+    .attr("x", function(d){
+      return d.x * w;
+
+  })
+    .attr("y", function(d){
+      return d.y * h;
+  })
+    .attr("width", w)
+    .attr("height", h)
+    .style("fill", function(d){
+      return(d3.interpolateRdYlBu(colorScale(1-d.value)));
+
+             //colorScale(d.value);
+  });
+
+}); //end of d3.csv call
+
+var inter = setInterval(function(){
+    updateData();
+}, refresh);
+
+
+
+function updateData() {
+  d3.csv(file, function(error, data) {
+    data.forEach(function(d) {
+     d.y = +d.y;
+     d.x = +d.x;
+     d.value = +d.value;
+   });
+
+  var svg = d3.select(".heatmap");
+  var rectangles = svg.selectAll("rect")
+    .data(data);
+
+  rectangles.style("fill", function(d){
+	return(d3.interpolateRdYlBu(colorScale(1-d.value)));
+    });
+  }); // end of d3.csv
+} // end of update data
+
+
+</script>
+</div>
+<body>
+
+<div class="heatmap" id="heatmap"></div>
+
+ </body>
+
+</html>
