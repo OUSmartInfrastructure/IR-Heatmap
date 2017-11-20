@@ -1,18 +1,20 @@
-# IR-Heamap
-IR Heatmap using the Adafruit AMG8833 IR board
+# This code was written by Dr. Julio Arauz, PhD and graduate student Riley Engle of Ohio University in Athens, Ohio.
 
-This program uses the Adafruit AMG8833 IR Thermal Camera Breakout Board to gather IR data from objects infront of it. 
+IR Heatmap using the Adafruit AMG8833 IR board. It uses the Adafruit library for their IR sensor, as well as Numpy and SciPy.
+
+This program uses the Adafruit AMG8833 IR Thermal Camera Breakout Board to gather IR data from objects in front of it. 
 It also uses the Adafruit library located here:
 
 https://github.com/adafruit/Adafruit_AMG88xx
 
-And the tutorial setting up basic connectvity located here:
+And the tutorial setting up basic connectivity located here:
 
 https://learn.adafruit.com/adafruit-amg8833-8x8-thermal-camera-sensor/overview
 
 This project is a demonstration of the 8x8 sensor and displays a larger interpolated version to a webpage. The default code
-contains the information for the final location where the seonsor is mounted in Schoonover Center 009 at Ohio University in 
+contains the information for the final location where the sensor is mounted in Schoonover Center 009 at Ohio University in 
 Athens, Ohio. This sensor is mounted above a window that users can view the webpage of the heatmap inside the room. 
+
 
 The function of the files is as follows:
 
@@ -27,7 +29,7 @@ This program contains a number of variable that can be updated, including the re
 
 index.html
 
-This file contains the javascript to pull the information from pixels.csv and place it on the web page in an svg object. 
+This file contains the JavaScript to pull the information from pixels.csv and place it on the web page in an svg object. 
 The object draws a number of rectangles based on the number of entries in the pixels.csv file. 
 This way, we can dynamically change the size in one location (the IR_Sensor.py script) while allowing the core 
 functionality of the webpage remain the same. This page also contains a function to update the svg object with new data from the 
