@@ -1,3 +1,6 @@
+#This code was written by Dr. Julio Arauz, PhD and graduate student Riley Engle
+#at Ohio University in Athens, Ohio
+
 from Adafruit_AMG88xx import Adafruit_AMG88xx
 import math, time, sys
 from scipy.interpolate import griddata
