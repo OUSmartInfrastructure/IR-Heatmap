@@ -1,4 +1,5 @@
 #This code was written by Dr. Julio Arauz, PhD and graduate student Riley Engle
+#Edited by graduate student Christopher M Johnston
 #at Ohio University in Athens, Ohio
 
 from Adafruit_AMG88xx import Adafruit_AMG88xx
@@ -24,7 +25,7 @@ def average(pixels):
 		t = t+x
 	return float(t/l)
 
-fn = 'pixels.csv' #File of output
+fn = '/var/www/html/data/pixels.csv' #File of output
 
 sensor = Adafruit_AMG88xx()
 MINTEMP = 22
