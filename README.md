@@ -1,5 +1,5 @@
 # This code was written by Dr. Julio Arauz, PhD and graduate student Riley Engle of Ohio University in Athens, Ohio.
-# Version 2 was edited by graduate student Christopher M Johnston of Ohio University in Athens, Ohio.
+#Version 2 was edited by graduate student Christopher M Johnston of Ohio University in Athens, Ohio.
 
 IR Heatmap using the Adafruit AMG8833 IR board. It uses the Adafruit library for their IR sensor, as well as Numpy and SciPy.
 
