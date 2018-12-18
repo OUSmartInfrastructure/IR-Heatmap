@@ -1,4 +1,5 @@
 # This code was written by Dr. Julio Arauz, PhD and graduate student Riley Engle of Ohio University in Athens, Ohio.
+# Version 2 was editted by graduate student Christopher M Johnston of Ohio University in Athens, Ohio.
 
 IR Heatmap using the Adafruit AMG8833 IR board. It uses the Adafruit library for their IR sensor, as well as Numpy and SciPy.
 
@@ -37,5 +38,9 @@ pixels.csv file. This number can be set with the variable declarations at the to
 
 The webpage contains an image of where the sensor is mounted. The webpage positions the div that contains the svg object to be
 located roughly where the sensor is located and will be gathering data (Heatmap.png).
+
+rc.local
+
+This file contains the script to create a mounted ram disk, so that the python program is not constantly saving to the SD card. Furthermore, it allows the python script to be executed on boot.
 
 
